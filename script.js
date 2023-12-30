@@ -1,38 +1,21 @@
-// All contries flags
+// Two obj comparsion
 
-const URL = "https://restcountries.com/v3.1/all";
+let obj1 = { name: "person", age: 5 };
+let obj2 = { age: 5, name: "person" };
+// console.log(obj1, obj2);
+function areobjectsEqual(obj1, obj2) {
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+  if (keys1.length !== keys2.length) {
+    return false;
 
-const xhr = new XMLHttpRequest();
-
-xhr.onload = () => {
-  let data = JSON.parse(xhr.response);
-  console.log(JSON.parse(xhr.response));
-  for (const iterator of data) {
-    console.log(iterator.flags.png);
+    for (let key of keys1) {
+      if (obj1[keys1] !== obj2[keys2]) {
+        return false;
+      }
+    }
   }
-};
+  return true;
+}
 
-xhr.open("GET", URL);
-xhr.send();
-
-// All countries name,region,sub region, population
-
-// const URL = "https://restcountries.com/v3.1/all";
-
-// const xhr = new XMLHttpRequest();
-
-// xhr.onload = () => {
-//   let data = JSON.parse(xhr.response);
-//   console.log(JSON.parse(xhr.response));
-//   for (const iterator of data) {
-//     console.log(
-//       iterator.fifa,
-//       iterator.region,
-//       iterator.subregion,
-//       iterator.population
-//     );
-//   }
-// };
-
-// xhr.open("GET", URL);
-// xhr.send();
+console.log(areobjectsEqual(obj1, obj2));
